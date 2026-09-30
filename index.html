@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#09070a">
+  <title>Nossa História ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <main>
+
+    <!-- 01 ABERTURA -->
+    <section class="screen hero active" id="inicio">
+      <div class="hero-photo" style="background-image:url('fotos/foto1.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="content reveal">
+        <div class="heart-pulse">♥</div>
+        <p class="eyebrow">PARA VOCÊ</p>
+        <h1>Nossa<br>História</h1>
+        <p class="lead">Algumas histórias são escritas.<br>Outras simplesmente acontecem.</p>
+        <button class="primary" onclick="go('historia')">Começar <span>♥</span></button>
+        <p class="hint">uma pequena surpresa feita para você</p>
+      </div>
+    </section>
+
+    <!-- 02 PRIMEIRA MEMÓRIA -->
+    <section class="screen" id="historia">
+      <div class="content">
+        <p class="eyebrow">01 · O COMEÇO</p>
+        <h2>Antes de nós...</h2>
+        <p class="text">Em algum momento, duas pessoas que ainda não sabiam o que estava por vir se encontraram.</p>
+        <figure class="photo-card tilt-left">
+          <img src="fotos/foto2.jpg" alt="Nós dois">
+          <figcaption>Talvez nenhum dos dois imaginasse onde aquilo chegaria.</figcaption>
+        </figure>
+        <button class="primary" onclick="go('pergunta')">Continuar <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- 03 PERGUNTA -->
+    <section class="screen" id="pergunta">
+      <div class="content">
+        <p class="eyebrow">02 · UMA PERGUNTA</p>
+        <h2>Você lembra?</h2>
+        <p class="text">O que mudou nossa história?</p>
+
+        <div class="choices">
+          <button onclick="answer(this,false)">Uma conversa qualquer</button>
+          <button onclick="answer(this,true)">O nosso encontro ♥</button>
+          <button onclick="answer(this,false)">O acaso</button>
+        </div>
+        <p id="answerMessage" class="answer-message"></p>
+      </div>
+    </section>
+
+    <!-- 04 MEMÓRIA -->
+    <section class="screen" id="memoria">
+      <div class="content">
+        <p class="eyebrow">03 · UMA MEMÓRIA</p>
+        <h2>Talvez tenha sido aqui.</h2>
+        <figure class="photo-card">
+          <img src="fotos/foto3.jpg" alt="Uma memória nossa">
+        </figure>
+        <p class="text">Entre tantos momentos, alguns simplesmente ficam. Não porque foram perfeitos, mas porque foram nossos.</p>
+        <button class="primary" onclick="go('momento')">Guardar essa memória <span>♥</span></button>
+      </div>
+    </section>
+
+    <!-- 05 MOMENTO ESPECIAL -->
+    <section class="screen photo-screen" id="momento">
+      <div class="full-photo"><img src="fotos/foto4.jpg" alt="Um momento especial"></div>
+      <div class="full-gradient"></div>
+      <div class="content bottom">
+        <p class="eyebrow">04 · NÓS</p>
+        <h2>Algumas memórias parecem eternas.</h2>
+        <p class="text">Essa é uma delas.</p>
+        <button class="primary" onclick="go('dado')">Continuar <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- 06 D20 -->
+    <section class="screen" id="dado">
+      <div class="content">
+        <p class="eyebrow">05 · UMA ESCOLHA</p>
+        <h2>Agora é com o destino.</h2>
+        <p class="text">Toque no dado. Vamos ver o que ele decide.</p>
+
+        <button class="d20" id="d20" onclick="rollDice()" aria-label="Rolar o dado">
+          <span id="diceNumber">20</span>
+        </button>
+
+        <p id="diceStatus" class="dice-status">Toque para rolar</p>
+      </div>
+    </section>
+
+    <!-- 07 UNIVERSO -->
+    <section class="screen" id="universo">
+      <div class="content">
+        <p class="eyebrow">06 · NOSSO UNIVERSO</p>
+        <h2>Não foi só um momento.</h2>
+        <p class="text">Foi uma coleção de pequenas coisas que, juntas, viraram nós.</p>
+
+        <div class="memory-grid">
+          <button onclick="showMemory('Um encontro que virou começo.')">01<br><small>começo</small></button>
+          <button onclick="showMemory('Uma risada que ficou na memória.')">02<br><small>risada</small></button>
+          <button onclick="showMemory('Um abraço que disse mais do que palavras.')">03<br><small>abraço</small></button>
+          <button onclick="showMemory('Uma escolha que eu faria novamente.')">04<br><small>escolha</small></button>
+        </div>
+
+        <p id="memoryText" class="memory-text"></p>
+
+        <figure class="photo-card small-card">
+          <img src="fotos/foto5.jpg" alt="Nós juntos">
+        </figure>
+
+        <button class="primary" onclick="go('carta')">Continuar <span>♥</span></button>
+      </div>
+    </section>
+
+    <!-- 08 CARTA -->
+    <section class="screen" id="carta">
+      <div class="content letter-intro">
+        <div class="envelope">✉</div>
+        <p class="eyebrow">07 · SEM JOGO AGORA</p>
+        <h2>Tem uma coisa que eu queria te dizer.</h2>
+        <p class="text">Sem dado, sem resposta certa. Só eu falando com você.</p>
+        <button class="primary" onclick="openLetter()">Abrir minha carta <span>♥</span></button>
+      </div>
+    </section>
+
+    <!-- 09 FINAL -->
+    <section class="screen hero final-screen" id="final">
+      <div class="hero-photo" style="background-image:url('fotos/foto6.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="content reveal">
+        <p class="eyebrow">08 · NO FINAL DE TUDO</p>
+        <h2 id="finalTitle">Eu escolheria você de novo.</h2>
+        <div id="letterText" class="letter"></div>
+        <div class="signature">Com amor,<br><strong>seu amor ♥</strong></div>
+        <button class="ghost" onclick="restart()">Voltar ao começo</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
